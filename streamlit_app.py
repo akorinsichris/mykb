@@ -23,45 +23,43 @@ CATEGORY = [
   "Teradata",
 ]
 
-# onboarding a new kb form
+# Onboarding New KB Form
 with st.form(key="kb_form"):
-    category_name = st.selectbox("Category*", options=CATEGORY)
-    subject = st.text_input(label="Subject*")
+    category_name = st.selectbox("Category*:", options=CATEGORY )
+    subject_name = st.text_input(label="Subject*:")
     description = st.text_area(label="Description")
-  
+    
 
     # Mark mandatory fields
     st.markdown("**required*")
 
-    submit_button = st.form_submit_button(lable="Submit")
+    submit_button = st.form_submit_button(label="Submit KB Details")
 
-    # if submit button is pressed
+    # If the submit button is pressed
     if submit_button:
-        # check all mandatory field are filled
-        if not category_name or not subject:
+        # Check if all mandatory fields are filled
+        if not category_name or not subject_name:
             st.warning("Ensure all mandatory fields are filled.")
             st.stop()
-        elif existing_data["Subject"].str.contains(subject).any():
-            st.warning("Subject already exists.")
+        elif existing_data["Subject"].str.contains(subject_name).any():
+            st.warning("A subject like this name already exists.")
             st.stop()
         else:
-            # create a new row of kb data
+            # Create a new row of kb data
             kb_data = pd.DataFrame(
                 [
                     {
                         "Category": category_name,
-                        "Subject": subject,
+                        "Subject": subject_name,
                         "Description": description,
                     }
                 ]
             )
-    
-            # Add the new kb data to the existing data
+
+            # Add the new vendor data to the existing data
             updated_df = pd.concat([existing_data, kb_data], ignore_index=True)
 
-            # Update Google Sheets with the new kb data
+            # Update Google Sheets with the new vendor data
             conn.update(worksheet="knowledgebase", data=updated_df)
-  
-            st.write("Records Save")
-  
-  
+
+            st.success("KnowledgeBase details successfully addedd!")
