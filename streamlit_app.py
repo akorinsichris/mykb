@@ -17,9 +17,11 @@ existing_data = existing_data.dropna(how="all")
 
 CATEGORY = [
   "Linux",
-  "Technology",
-  "Snowflake",
+  "Network",
   "PostgreSQL",
+  "Python",
+  "Snowflake",
+  "Technology",
   "Teradata",
 ]
 
