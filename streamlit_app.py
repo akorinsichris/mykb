@@ -3,7 +3,7 @@ from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 
 # Display Title and Desription
-st.title("My Knowledge Base Portal")
+st.title("My Knowledge Base Portal":open_book:)
 st.markdown("Enter the details of the new knowledge information below.")
 
 # Establishing a Google Sheets Connection
