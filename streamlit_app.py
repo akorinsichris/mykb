@@ -27,8 +27,9 @@ CATEGORY = [
 
 # Onboarding New KB Form
 with st.form(key="kb_form"):
-    category_name = st.selectbox("Category*:", options=CATEGORY )
-    subject_name = st.text_input(label="Subject*:")
+    cols = st.columns((1, 1))
+    category_name = cols[0].selectbox("Category*:", options=CATEGORY )
+    subject_name = cols[1].text_input(label="Subject*:")
     description = st.text_area(label="Description")
     
 
