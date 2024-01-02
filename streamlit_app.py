@@ -68,7 +68,7 @@ with st.form(key="kb_form"):
             st.success("KnowledgeBase details successfully addedd!")
             st.balloons()
 
-      expander = st.expander("See All records")
-      with expander:
-        st.dataframe(existing_data)
+    expander = st.expander("See All records")
+    with expander:
+      st.dataframe(existing_data)
 
